@@ -1,1 +1,10 @@
+
+<ul class="list-group">
+  <li 
+      *ngFor="let movie of popularMovies.results"
+      class="list-group-item">
+      {{ movie.original_title }}
+  </li>
+</ul>
+
 <app-movie-card></app-movie-card>
