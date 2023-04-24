@@ -14,7 +14,7 @@ export class MovieCardComponent implements OnInit {
   constructor(private service:MovieReviewService) {}
   
   ngOnInit() {
-      this.service.getPosts()
+      this.service.getPosts(this.movie.id)
         .subscribe(response => {
           this.reviews = response;
         });
