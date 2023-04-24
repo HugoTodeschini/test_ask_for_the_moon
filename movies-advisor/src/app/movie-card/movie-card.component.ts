@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
@@ -7,18 +6,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-  title!: string;
-  description!: string;
-  createdDate!: Date;
-  snaps!: number;
-  popularMoviesList!: Array<number>;
+  @Input() movie!: string; // decorate the property with @Input()
+  //description!: string;
   //https://api.themoviedb.org/3/movie/popular?api_key=f7b4e11c5d4e61a58dd19582d2d5717d
 
   ngOnInit() {
-    this.title = 'Archibald';
-    this.description = 'Mon meilleur ami depuis tout petit !';
-    this.createdDate = new Date();
-    this.snaps = 6;
-    this.popularMoviesList = [5,6,8]
+    //this.description = 'Mon meilleur ami depuis tout petit !';
   }
 }
