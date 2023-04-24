@@ -1,27 +1,32 @@
-<mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>{{ movie.title }}</mat-card-title>
-      <mat-card-subtitle>Date de sortie: {{ movie.release_date | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
-      <mat-card-subtitle>Note du public: {{ movie.vote_average }}/10</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src={{url_image}} alt="Photo of the movie">
+<main>
+  <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ movie.title }}</mat-card-title>
+        <mat-card-subtitle>Date de sortie: {{ movie.release_date | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+        <mat-card-subtitle>Note du public: {{ movie.vote_average }}/10</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src={{url_image}} alt="Photo of the movie">
+      <mat-card-content>
+        <p>
+          Résumé: {{ movie.overview }}
+        </p>
+      </mat-card-content>
+  </mat-card>
+  <mat-card class="example-card" *ngIf= "reviews.results.length > 0">
     <mat-card-content>
       <p>
-        {{ movie.overview }}
+        Avis d'un spectateur
+      </p>
+      <p>
+        {{reviews.results[0].content}}
       </p>
     </mat-card-content>
-</mat-card>
-<mat-card class="example-card" *ngIf= "reviews.results.length > 0">
-  <mat-card-content>
-    <p>
-      {{reviews.results[0].content}}
-    </p>
-  </mat-card-content>
-</mat-card>
-<mat-card class="example-card" *ngIf= "reviews.results.length == 0">
-  <mat-card-content>
-    <p>
-      Ce film n'a pas encore reçu d'avis.
-    </p>
-  </mat-card-content>
-</mat-card>
+  </mat-card>
+  <mat-card class="example-card" *ngIf= "reviews.results.length == 0">
+    <mat-card-content>
+      <p>
+        Ce film n'a pas encore reçu d'avis.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</main>
