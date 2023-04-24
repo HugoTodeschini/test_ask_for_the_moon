@@ -13,7 +13,6 @@ export class MovieCardComponent implements OnInit {
   reviews!: any
   url_image!: string
   
-
   constructor(private reviewService:MovieReviewService, private movieService:MovieImageService) {}
   
   ngOnInit() {

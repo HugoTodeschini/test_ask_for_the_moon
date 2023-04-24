@@ -19,4 +19,11 @@ export class AppComponent implements OnInit {
           this.popularMovies = response;
         });
   }
+
+  getPopularMovies(language:string) {
+    this.service.getPosts(language)
+        .subscribe(response => {
+          this.popularMovies = response;
+        });
+  }
 }

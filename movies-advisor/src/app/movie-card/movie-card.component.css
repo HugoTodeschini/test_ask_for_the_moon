@@ -9,6 +9,7 @@ main{
 }
 
 mat-card{
-  margin-right: 50px;
+  margin-right: 25px;
+  margin-left: 25px;
   margin-top: 30px;
 }

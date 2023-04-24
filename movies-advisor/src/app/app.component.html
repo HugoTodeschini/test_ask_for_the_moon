@@ -1,6 +1,16 @@
 <main>
     <h1>Bonjour Richard !</h1>
     <h2>Voici les films les plus populaires du moment</h2>
+    <div class = "langue">
+        <mat-form-field appearance="fill">
+            <mat-label>Langue</mat-label>
+            <mat-select (selectionChange)="getPopularMovies($event.value)">
+              <mat-option value="en">English</mat-option>
+              <mat-option value="fr">Français</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    
     <app-movie-card [movie]="movie" *ngFor="let movie of popularMovies.results">
     </app-movie-card>
 </main>

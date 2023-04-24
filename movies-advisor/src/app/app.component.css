@@ -4,3 +4,10 @@ main{
   justify-content: center;
   align-items: center;
 }
+
+.langue{
+  width: 1300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end
+}
