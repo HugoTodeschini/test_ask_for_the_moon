@@ -9,19 +9,19 @@ import { MovieImageService } from '../services/movie-image.service';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie!: any;
+  @Input() language!: string;
   images!: any
   reviews!: any
   url_image!: string
-  
-  constructor(private reviewService:MovieReviewService, private movieService:MovieImageService) {}
+  constructor(private reviewService:MovieReviewService, private imageService:MovieImageService) {}
   
   ngOnInit() {
-      this.reviewService.getPosts(this.movie.id)
+      this.reviewService.getReviews(this.movie.id, this.language)
         .subscribe(response => {
           this.reviews = response;
         });
 
-      this.movieService.getPosts(this.movie.id)
+      this.imageService.getPosts(this.movie.id)
         .subscribe(response => {
           this.images = response;
           this.url_image = "https://image.tmdb.org/t/p/original" + this.images.backdrops[0].file_path

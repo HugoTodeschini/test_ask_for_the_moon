@@ -11,6 +11,6 @@
         </mat-form-field>
     </div>
     
-    <app-movie-card [movie]="movie" *ngFor="let movie of popularMovies.results">
+    <app-movie-card [movie]="movie" [language]= "langue" *ngFor="let movie of popularMovies.results">
     </app-movie-card>
 </main>

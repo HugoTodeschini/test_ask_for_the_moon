@@ -10,6 +10,7 @@ import { PopularMoviesService } from './services/popular-movies.service';
 export class AppComponent implements OnInit {
   title = 'movies-advisor';
   popularMovies:any;
+  langue!:string;
   
   constructor(private service:PopularMoviesService) {}
   
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   getPopularMovies(language:string) {
+    this.langue = language
     this.service.getPosts(language)
         .subscribe(response => {
           this.popularMovies = response;
