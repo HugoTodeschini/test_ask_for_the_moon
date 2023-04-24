@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MovieReviewService } from '../services/movie-review.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -6,11 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movie!: string; // decorate the property with @Input()
+  @Input() movie!: any; // decorate the property with @Input()
   //description!: string;
-  //https://api.themoviedb.org/3/movie/popular?api_key=f7b4e11c5d4e61a58dd19582d2d5717d
+  reviews!: any;
 
+  constructor(private service:MovieReviewService) {}
+  
   ngOnInit() {
-    //this.description = 'Mon meilleur ami depuis tout petit !';
+      this.service.getPosts()
+        .subscribe(response => {
+          this.reviews = response;
+        });
   }
 }
