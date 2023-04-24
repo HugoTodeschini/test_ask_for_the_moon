@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MovieReviewService } from '../services/movie-review.service';
+import { MovieImageService } from '../services/movie-image.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -7,16 +8,24 @@ import { MovieReviewService } from '../services/movie-review.service';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movie!: any; // decorate the property with @Input()
-  //description!: string;
-  reviews!: any;
+  @Input() movie!: any;
+  images!: any
+  reviews!: any
+  url_image!: string
+  
 
-  constructor(private service:MovieReviewService) {}
+  constructor(private reviewService:MovieReviewService, private movieService:MovieImageService) {}
   
   ngOnInit() {
-      this.service.getPosts(this.movie.id)
+      this.reviewService.getPosts(this.movie.id)
         .subscribe(response => {
           this.reviews = response;
+        });
+
+      this.movieService.getPosts(this.movie.id)
+        .subscribe(response => {
+          this.images = response;
+          this.url_image = "https://image.tmdb.org/t/p/original" + this.images.backdrops[0].file_path
         });
   }
 }
